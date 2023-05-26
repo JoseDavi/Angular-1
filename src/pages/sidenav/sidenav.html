@@ -1,0 +1,10 @@
+<div ng-controller="sidenavController" class="sidenav-main-container">
+  <div class="sidenav-container" ng-repeat="page in pages">
+    <div
+      ng-click="setPage(page.icon)"
+      ng-class="['sidenav-card', page.select ? 'sidenav-select' : '']"
+    >
+      <i ng-class="['dds__icon', 'dds__icon--' + page.icon]"></i>
+    </div>
+  </div>
+</div>

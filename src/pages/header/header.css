@@ -1,0 +1,27 @@
+.header-main-container {
+  background: white;
+  display: flex;
+  flex-direction: rows;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-image img {
+  height: 60px;
+}
+
+.header-search-content {
+  width: 30%;
+}
+
+.header-search-content input {
+  width: 100%;
+}
+
+.header-user-content {
+  padding-right: 20px;
+}
+
+.dds__icon--chevron-down {
+  cursor: pointer;
+}

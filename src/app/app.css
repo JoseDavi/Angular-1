@@ -1,0 +1,34 @@
+.app-container {
+  margin: 0px;
+}
+.app-container-main-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40px;
+  grid-template-rows: 60px calc(100vh - 60px);
+  grid-template-areas:
+    "header  header"
+    "sidebar content";
+}
+
+.app-container-header {
+  grid-area: header;
+}
+
+.app-container-sidenav-content {
+  grid-area: sidebar;
+}
+
+.app-container-screens-content {
+  grid-area: content;
+  background: #e1e1e1;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  background: white;
+}

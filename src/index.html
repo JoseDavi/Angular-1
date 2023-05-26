@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appExemplo">
+  <head>
+    <meta charset="utf-8" />
+    <title>App Exemplo</title>
+    <link rel="stylesheet" href="app/app.css" />
+    <link
+      rel="stylesheet"
+      crossorigin
+      href="https://dds.dell.com/components/2.13.0/css/dds-icons.min.css"
+    />
+    <link rel="stylesheet" href="pages/header/header.css">
+    <link rel="stylesheet" href="pages/sidenav/sidenav.css">
+    <link rel="stylesheet" href="pages/home/home.css">
+    <link rel="stylesheet" href="pages/login/login.css">
+    <link rel="stylesheet" href="pages/projects/projects.css">
+    <script src="lib/angular-1.7.9/angular.js"></script>
+    <script src="lib/angular-1.7.9/angular-route.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/appController.js"></script>
+    <script src="pages/login/loginController.js"></script>
+    <script src="pages/home/homeController.js"></script>
+    <script src="pages/projects/projectsController.js"></script>
+    <script src="pages/header/headerController.js"></script>
+    <script src="pages/sidenav/sidenavController.js"></script>
+  </head>
+
+  <body ng-controller="appController" class="app-container">
+    <div class="app-container-main-container">
+      <div class="app-container-header" ng-include="'pages/header/header.html'"></div>
+      <div
+        class="app-container-sidenav-content"
+        ng-include="'pages/sidenav/sidenav.html'"
+      ></div>
+      <div class="app-container-screens-content">
+        <div ng-view class="main-container"></div>
+      </div>
+  </body>
+</html>
