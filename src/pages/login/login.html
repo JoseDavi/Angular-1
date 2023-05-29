@@ -21,14 +21,83 @@
             required
           />
 
-          <button type="submit">Login</button>
+          <button type="submit" style="margin-top: 20px">Login</button>
         </form>
-        <button type="button" ng-click="showLogin = !showLogin">
+        <button type="button" ng-click="showLogin = !showLogin" id="nav-bnt">
           Sign up for an account
         </button>
       </div>
-      <div ng-show="!showLogin" class="register">
-        <button type="button" ng-click="showLogin = !showLogin">
+      <div ng-show="!showLogin" class="register flex">
+        <form ng-submit="register()" class="flex">
+          <label>
+            <input type="radio" ng-model="type" value="student" />
+            Student
+          </label>
+          <label>
+            <input type="radio" ng-model="type" value="teacher" />
+            Teacher
+          </label>
+          <br />
+
+          <input
+            type="text"
+            ng-model="user.fullname"
+            placeholder="Full name"
+            required
+          />
+
+          <input
+            type="text"
+            ng-model="user.email"
+            placeholder="Email"
+            required
+          />
+
+          <input
+            type="password"
+            ng-model="user.password"
+            placeholder="password"
+            required
+          />
+
+          <input
+            type="password"
+            ng-model="user.cpassword"
+            placeholder="Confirm password"
+            required
+          />
+          <span ng-show="user.password !== user.cpassword"
+            >Mismatched password</span
+          >
+
+          <input
+            ng-if="type === 'student'"
+            type="text"
+            ng-model="user.institution"
+            placeholder="Educational institution"
+            required
+          />
+
+          <input
+            ng-if="type === 'teacher'"
+            type="text"
+            ng-model="user.occupation"
+            placeholder="Occupation area"
+            required
+          />
+
+          <input
+            ng-if="type === 'teacher'"
+            type="text"
+            ng-model="user.formation"
+            placeholder="Formation area"
+            required
+          />
+          <button type="submit" style="margin-top: 20px">
+            CREATE AN ACCOUNT
+          </button>
+        </form>
+        <button type="button" ng-click="showLogin = !showLogin" id="nav-bnt">
           back to login
         </button>
       </div>
