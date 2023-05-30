@@ -12,7 +12,7 @@ angular
         select: false,
         rediretUrl: "projects",
       },
-    ];
+    ];    
     $scope.setPage = function (icon) {
       var rediretPage = "";
       $scope.pages.map(function (page) {
