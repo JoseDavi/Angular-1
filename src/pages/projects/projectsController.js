@@ -1,4 +1,11 @@
-angular.module("appExemplo").controller("projectsController", function ($scope, $location) {
+angular
+  .module("appExemplo")
+  .controller("projectsController", function ($scope, $location) {
+    $scope.tab = "content";
+    $scope.setTab = function (tab) {
+      $scope.tab = tab;
+      console.log($scope.tab);
+    };
     /*
     $scope.pages = [
         {
@@ -33,4 +40,4 @@ angular.module("appExemplo").controller("projectsController", function ($scope, 
         }
     }
     */
-});
+  });

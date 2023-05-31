@@ -22,16 +22,17 @@ app.config(function ($routeProvider) {
       controller: "projectListingController",
     })
     .when("/projects/projectRegistration", {
-      templateUrl: "pages/projects/projectRegistration/projectRegistration.html",
+      templateUrl:
+        "pages/projects/projectRegistration/projectRegistration.html",
       controller: "projectRegistrationController",
     })
     .otherwise({ redirectTo: "/login" });
 });
 
-app.run([
-  "$rootScope",
-  function ($rootScope) {
-    // Inicializando a variável global
-    $rootScope.isLoginPageGeneral = true;
-  },
-]);
+// app.run([
+//   "$rootScope",
+//   function ($rootScope) {
+//     // Inicializando a variável global
+//     $rootScope.isLoginPageGeneral = true;
+//   },
+// ]);
