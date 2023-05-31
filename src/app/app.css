@@ -32,3 +32,17 @@
   height: 100%;
   background: white;
 }
+
+.bnt-primary {
+  background: #0672cb;
+  border-color: #0672cb;
+  color: white;
+  cursor: pointer;
+}
+
+.bnt-secondary {
+  background: white;
+  border-color: #0672cb;
+  color: #0672cb;
+  cursor: pointer;
+}
