@@ -6,5 +6,23 @@
             <button class="search-btn">Search</button>
         </div>
         <div class="horizontal-row"></div>
+        <div class="show-projects">
+            <span> Projects({{projects.length}}):</span>
+            <div ng-repeat="project in projects">
+                <table>
+                    <tr>
+                        <td class="name"><input type="checkbox" name="project.name" id="project.id">{{project.name}}</td>
+                        <td class="description">{{project.description | limitarTamanho: 100}}</td>
+                        <td class="date">{{project.date | date:'MM/dd/yy'}}</td>
+                        <td class="coordinator">{{project.coordinator}}</td>
+                        <td class="students">
+                            <div ng-repeat="student in project.students" class="students-name">
+                                {{student.name}}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>  
 </div>
