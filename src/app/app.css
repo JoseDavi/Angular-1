@@ -46,3 +46,8 @@
   color: #0672cb;
   cursor: pointer;
 }
+
+.general-content{
+  height: 100%;
+  width: 100%;
+}

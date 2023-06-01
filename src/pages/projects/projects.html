@@ -11,16 +11,16 @@
   </ul>
 
   <div class="tab-content general">
-    <div ng-switch="tab">
-      <div ng-switch-when="content">
+    <div ng-switch="tab" class="general-content">
+      <div ng-switch-when="content" class="general-content">
         <div
           ng-include="'pages/projects/projectListing/projectListing.html'"
-        ></div>
+          class="general-content"></div>
       </div>
       <div ng-switch-when="new">
         <div
           ng-include="'pages/projects/projectRegistration/projectRegistration.html'"
-        ></div>
+         class="general-content"></div>
       </div>
     </div>
   </div>
