@@ -23,7 +23,7 @@
                         <td class="table-head">Coordinator</td>
                         <td class="table-head">Students</td>
                     </tr>
-                    <tr ng-repeat="project in projects">
+                    <tr ng-repeat="project in paginateProjects">
                         <td class="name"><input type="checkbox" name="project.name" id="project.id"><span>{{project.name}}</span></td>
                         <td class="description">{{project.description | limitarTamanho: 100}}</td>
                         <td class="date">{{project.date | date:'MM/dd/yy'}}</td>
@@ -39,16 +39,16 @@
                 </table>
         </div>
         <div class="buttons">
-            <select ng-model="selectedPage" ng-options="page for page in pages">
+            <select ng-Model="selectedPage" ng-options="page for page in pages">
                 {{pages}}
             </select>
             <div class="show-paging">
                 <i class="dds__icon dds__icon--collapse-down"></i>
-                <i class="dds__icon dds__icon--arrow-tri-left"></i>
-                <div class="showPage">
-
+                <i class="dds__icon dds__icon--arrow-tri-left" ng-click="previousPage()"></i>
+                <div class="showPage" ng-model="currentPage">
+                    {{currentPage}}
                 </div>
-                <i class="dds__icon dds__icon--arrow-tri-right"></i>
+                <i class="dds__icon dds__icon--arrow-tri-right" ng-click="nextPage()"></i>
                 <i class="dds__icon dds__icon--collapse-down"></i>
             </div>
         </div>
