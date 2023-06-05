@@ -7,13 +7,19 @@ angular.module("appExemplo").controller("projectListingController", function ($s
             coordinator: "luisthiago",
             students:[
                 {
-                    name: 'davigomes'
+                    name: 'davigomes', 
+                    color1: '#5CC1EE', 
+                    color2: '1px solid #0063B8'
                 },
                 {
-                    name: 'estheniosouza'
+                    name: 'estheniosouza',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
                 {
-                    name: 'lucassoarez'
+                    name: 'lucassoarez',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
 
             ], id:1
@@ -25,15 +31,20 @@ angular.module("appExemplo").controller("projectListingController", function ($s
             coordinator: "luisthiago",
             students:[
                 {
-                    name: 'davigomes'
+                    name: 'davigomes', 
+                    color1: '#5CC1EE', 
+                    color2: '1px solid #0063B8'
                 },
                 {
-                    name: 'estheniosouza'
+                    name: 'estheniosouza',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
                 {
-                    name: 'lucassoarez'
+                    name: 'lucassoarez',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
-
             ], id:1
         }, 
         {
@@ -43,15 +54,20 @@ angular.module("appExemplo").controller("projectListingController", function ($s
             coordinator: "luisthiago",
             students:[
                 {
-                    name: 'davigomes'
+                    name: 'davigomes', 
+                    color1: '#5CC1EE', 
+                    color2: '1px solid #0063B8'
                 },
                 {
-                    name: 'estheniosouza'
+                    name: 'estheniosouza',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
                 {
-                    name: 'lucassoarez'
+                    name: 'lucassoarez',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
-
             ], id:1
         },{ 
             name: "Project 4",
@@ -60,13 +76,19 @@ angular.module("appExemplo").controller("projectListingController", function ($s
             coordinator: "luisthiago",
             students:[
                 {
-                    name: 'davigomes'
+                    name: 'davigomes', 
+                    color1: '#5CC1EE', 
+                    color2: '1px solid #0063B8'
                 },
                 {
-                    name: 'estheniosouza'
+                    name: 'estheniosouza',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
                 {
-                    name: 'lucassoarez'
+                    name: 'lucassoarez',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
 
             ], id:1
@@ -77,13 +99,19 @@ angular.module("appExemplo").controller("projectListingController", function ($s
             coordinator: "luisthiago",
             students:[
                 {
-                    name: 'davigomes'
+                    name: 'davigomes', 
+                    color1: '#5CC1EE', 
+                    color2: '1px solid #0063B8'
                 },
                 {
-                    name: 'estheniosouza'
+                    name: 'estheniosouza',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
                 {
-                    name: 'lucassoarez'
+                    name: 'lucassoarez',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
 
             ], id:1
@@ -94,18 +122,26 @@ angular.module("appExemplo").controller("projectListingController", function ($s
             coordinator: "luisthiago",
             students:[
                 {
-                    name: 'davigomes'
+                    name: 'davigomes', 
+                    color1: '#5CC1EE', 
+                    color2: '1px solid #0063B8'
                 },
                 {
-                    name: 'estheniosouza'
+                    name: 'estheniosouza',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
                 {
-                    name: 'lucassoarez'
+                    name: 'lucassoarez',
+                    color1: '#9BC438',
+                    color2: '1px solid #436F00'
                 },
 
             ], id:1
-        }
-    ]
+        },    
+    ];
+    $scope.pages = [ 5, 10, 15, 20, 25];
+    $scope.selectedPage = $scope.pages[4]
 }).filter('limitarTamanho', function(){
     return function(input, tamanho) {
         if(input.length > tamanho){

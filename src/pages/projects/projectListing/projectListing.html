@@ -30,11 +30,27 @@
                         <td class="coordinator">{{project.coordinator}}</td>
                         <td class="students">
                             <div ng-repeat="student in project.students" class="students-name">
-                                {{student.name}}
+                                <div ng-style="{backgroundColor: student.color1, 'border': student.color2}">
+                                    {{student.name}}
+                                </div>
                             </div>
                         </td>
                     </tr>
                 </table>
+        </div>
+        <div class="buttons">
+            <select ng-model="selectedPage" ng-options="page for page in pages">
+                {{pages}}
+            </select>
+            <div class="show-paging">
+                <i class="dds__icon dds__icon--collapse-down"></i>
+                <i class="dds__icon dds__icon--arrow-tri-left"></i>
+                <div class="showPage">
+
+                </div>
+                <i class="dds__icon dds__icon--arrow-tri-right"></i>
+                <i class="dds__icon dds__icon--collapse-down"></i>
+            </div>
         </div>
     </div>  
 </div>

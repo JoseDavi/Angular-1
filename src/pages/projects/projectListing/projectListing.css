@@ -62,8 +62,12 @@
   width: 45%;
 }
 .students{
-  width: 15%;
+  width: 90%;
   display: flex;
+  overflow: hidden;
+}
+.students-name{
+  margin-left: 10px;
 }
 .name{
   width: 20%;
@@ -91,5 +95,27 @@
   margin-right: 20px;
 }
 .project-icon{
+  margin-left: 15px;
+}
+.buttons select{
+  margin-top: 1%;
+  margin-left: 20px;
+  float: left;
+}
+.show-paging{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2%;
+}
+.show-paging i{
+  font-size: 1.4rem;
+  color: lightblue;
+  margin-left: 15px;
+}
+.showPage{
+  border: 1px solid #ccc;
+  height: 40px;
+  width: 40px;
   margin-left: 15px;
 }
