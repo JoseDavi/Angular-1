@@ -15,7 +15,7 @@
                     <i class="dds__icon dds__icon--compare project-icon" style="transform: rotate(180deg);"></i>
                 </div>
             </div>
-                <table>
+                <table ng-model="paginateProjects">
                     <tr>
                         <td class=""><input type="checkbox" name="projects " id="all-projects"><span>Name of Projects</span></td>
                         <td class="table-head">Description</td>
@@ -39,7 +39,7 @@
                 </table>
         </div>
         <div class="buttons">
-            <select ng-Model="selectedPage" ng-options="page for page in pages">
+            <select ng-model="pageSize" ng-options="page for page in pages" ng-change="updatePages()">
                 {{pages}}
             </select>
             <div class="show-paging">

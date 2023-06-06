@@ -140,34 +140,45 @@ angular.module("appExemplo").controller("projectListingController", function ($s
             ], id:1
         },    
     ];
-    $scope.pages = [ 5, 10, 15, 20, 25];
+    $scope.pages = [5, 10, 15, 20, 25];
 
-    $scope.selectedPage = $scope.pages[0];
-    $scope.pageSize = $scope.selectedPage;
+    $scope.pageSize = 5;
     $scope.currentPage = 1;
     $scope.totalPages = Math.ceil($scope.projects.length / $scope.pageSize);
 
-    $scope.paginateProjects = function(){
+    $scope.paginateProjects = [];
+
+    $scope.calculateView = function () {
         var startIndex = ($scope.currentPage - 1) * $scope.pageSize;
         var endIndex = startIndex + $scope.pageSize;
         $scope.paginateProjects = $scope.projects.slice(startIndex, endIndex);
     }
 
+    $scope.updatePages = function(){
+        $scope.totalPages = Math.ceil($scope.projects.length / $scope.pageSize);
+        $scope.calculateView();
+    }
+
     $scope.previousPage = function(){
         if($scope.currentPage > 1) {
             $scope.currentPage--;
-            $scope.paginateProjects();
+            $scope.calculateView();
         }
     }
 
     $scope.nextPage = function(){
         if($scope.currentPage < $scope.totalPages) {
             $scope.currentPage++;
-            $scope.paginateProjects();
+            $scope.calculateView();
         }
     }
 
-    $scope.paginateProjects($scope.currentPage);
+    $scope.teste = function (){
+        console.log($scope.selectedPage);
+        console.log($scope.currentPage);
+    }
+
+   $scope.calculateView()
 }).filter('limitarTamanho', function(){
     return function(input, tamanho) {
         if(input.length > tamanho){
