@@ -12,7 +12,9 @@
                 <div class="project-lisiting-icons">
                     <i class="dds__icon dds__icon--download project-icon"></i>
                     <i class="dds__icon dds__icon--trash project-icon"></i>
-                    <i class="dds__icon dds__icon--compare project-icon" style="transform: rotate(180deg);"></i>
+                    <div class="change-view">
+                        <i class="dds__icon dds__icon--compare project-icon"></i>
+                    </div>
                 </div>
             </div>
                 <table ng-model="paginateProjects">
@@ -43,13 +45,17 @@
                 {{pages}}
             </select>
             <div class="show-paging">
-                <i class="dds__icon dds__icon--collapse-down"></i>
+                <div class="go-to-start">
+                    <i class="dds__icon dds__icon--collapse-down"></i>
+                </div>
                 <i class="dds__icon dds__icon--arrow-tri-left" ng-click="previousPage()"></i>
                 <div class="showPage" ng-model="currentPage">
                     {{currentPage}}
                 </div>
                 <i class="dds__icon dds__icon--arrow-tri-right" ng-click="nextPage()"></i>
-                <i class="dds__icon dds__icon--collapse-down"></i>
+                <div class="go-to-end">
+                    <i class="dds__icon dds__icon--collapse-down"></i>
+                </div>
             </div>
         </div>
     </div>  
