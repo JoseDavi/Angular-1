@@ -22,7 +22,8 @@ angular.module("appExemplo").controller("projectListingController", function ($s
                     color2: '1px solid #436F00'
                 },
 
-            ], id:1
+            ], id:'project1',
+            selected: false
         }, 
         {
             name: "Project 2",
@@ -45,7 +46,8 @@ angular.module("appExemplo").controller("projectListingController", function ($s
                     color1: '#9BC438',
                     color2: '1px solid #436F00'
                 },
-            ], id:1
+            ], id:'project2',
+            selected: false
         }, 
         {
             name: "Project 3",
@@ -68,7 +70,8 @@ angular.module("appExemplo").controller("projectListingController", function ($s
                     color1: '#9BC438',
                     color2: '1px solid #436F00'
                 },
-            ], id:1
+            ], id:'project3',
+            selected: false
         },{ 
             name: "Project 4",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -91,7 +94,8 @@ angular.module("appExemplo").controller("projectListingController", function ($s
                     color2: '1px solid #436F00'
                 },
 
-            ], id:1
+            ], id:'project4',
+            selected: false
         },{ 
             name: "Project 5",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -114,7 +118,8 @@ angular.module("appExemplo").controller("projectListingController", function ($s
                     color2: '1px solid #436F00'
                 },
 
-            ], id:1
+            ], id:'project5',
+            selected: false
         },{ 
             name: "Project 6",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -137,7 +142,8 @@ angular.module("appExemplo").controller("projectListingController", function ($s
                     color2: '1px solid #436F00'
                 },
 
-            ], id:1
+            ], id:'project6',
+            selected: false
         },    
     ];
     $scope.pages = [5, 10, 15, 20, 25];
@@ -186,7 +192,25 @@ angular.module("appExemplo").controller("projectListingController", function ($s
             $scope.calculateView();
         }
     }
+    $scope.select = function(project) {
+        if(project.selected == true) {
+            var value = false;
+        }else {
+            var value = true;
+        }
 
+        let value1 = project.id
+        let values = document.getElementById(value1)
+        values.checked = value
+
+        var indice = $scope.projects.indexOf(project);
+        $scope.projects[indice].selected = value
+    }
+    $scope.selectAll = function(){
+        for(var i = 0; i < $scope.paginateProjects.length; i++) {
+            $scope.select($scope.paginateProjects[i])
+        }
+    }
    $scope.calculateView()
 }).filter('limitarTamanho', function(){
     return function(input, tamanho) {
