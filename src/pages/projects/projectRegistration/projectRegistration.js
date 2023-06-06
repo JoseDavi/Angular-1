@@ -4,7 +4,7 @@ angular
     $scope.project = {
       name: "",
       coordinator: "",
-      student: "",
+      students: "",
       description: "",
       document: "",
     };
@@ -30,14 +30,14 @@ angular
       $scope.project = {
         name: "",
         coordinator: "",
-        student: "",
+        students: "",
         description: "",
         document: "",
       };
     };
 
     $scope.upload = function () {
-      console.log($scope.project);
+      $scope.$emit("newProject", $scope.project);
     };
 
     $scope.click = function () {
