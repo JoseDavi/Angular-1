@@ -25,7 +25,8 @@ angular
             color2: "1px solid #436F00",
           },
         ],
-        id: 1,
+        id: "project1",
+        selected: false,
       },
       {
         name: "Project 2",
@@ -50,7 +51,8 @@ angular
             color2: "1px solid #436F00",
           },
         ],
-        id: 1,
+        id: "project2",
+        selected: false,
       },
       {
         name: "Project 3",
@@ -75,7 +77,8 @@ angular
             color2: "1px solid #436F00",
           },
         ],
-        id: 1,
+        id: "project3",
+        selected: false,
       },
       {
         name: "Project 4",
@@ -100,7 +103,8 @@ angular
             color2: "1px solid #436F00",
           },
         ],
-        id: 1,
+        id: "project4",
+        selected: false,
       },
       {
         name: "Project 5",
@@ -125,7 +129,8 @@ angular
             color2: "1px solid #436F00",
           },
         ],
-        id: 1,
+        id: "project5",
+        selected: false,
       },
       {
         name: "Project 6",
@@ -150,33 +155,77 @@ angular
             color2: "1px solid #436F00",
           },
         ],
-        id: 1,
+        id: "project6",
+        selected: false,
       },
     ];
+
     $scope.pages = [5, 10, 15, 20, 25];
 
-    $scope.selectedPage = $scope.pages[0];
-    $scope.pageSize = $scope.selectedPage;
+    $scope.pageSize = 5;
     $scope.currentPage = 1;
     $scope.totalPages = Math.ceil($scope.projects.length / $scope.pageSize);
 
-    $scope.paginateProjects = function () {
+    $scope.paginateProjects = [];
+
+    $scope.calculateView = function () {
       var startIndex = ($scope.currentPage - 1) * $scope.pageSize;
       var endIndex = startIndex + $scope.pageSize;
       $scope.paginateProjects = $scope.projects.slice(startIndex, endIndex);
+      console.log($scope.totalPages, $scope.projects, $scope.paginateProjects);
+    };
+
+    $scope.updatePages = function () {
+      $scope.totalPages = Math.ceil($scope.projects.length / $scope.pageSize);
+      $scope.calculateView();
     };
 
     $scope.previousPage = function () {
       if ($scope.currentPage > 1) {
         $scope.currentPage--;
-        $scope.paginateProjects();
+        $scope.calculateView();
       }
     };
 
     $scope.nextPage = function () {
       if ($scope.currentPage < $scope.totalPages) {
         $scope.currentPage++;
-        $scope.paginateProjects();
+        $scope.calculateView();
+      }
+    };
+
+    $scope.firstPage = function () {
+      if ($scope.currentPage > 1) {
+        $scope.currentPage = 1;
+        $scope.calculateView();
+      }
+    };
+
+    $scope.lastPage = function () {
+      if ($scope.currentPage < $scope.totalPages) {
+        $scope.currentPage = Math.ceil(
+          $scope.projects.length / $scope.pageSize
+        );
+        $scope.calculateView();
+      }
+    };
+    $scope.select = function (project) {
+      if (project.selected == true) {
+        var value = false;
+      } else {
+        var value = true;
+      }
+
+      let value1 = project.id;
+      let values = document.getElementById(value1);
+      values.checked = value;
+
+      var indice = $scope.projects.indexOf(project);
+      $scope.projects[indice].selected = value;
+    };
+    $scope.selectAll = function () {
+      for (var i = 0; i < $scope.paginateProjects.length; i++) {
+        $scope.select($scope.paginateProjects[i]);
       }
     };
 
@@ -188,10 +237,11 @@ angular
         date: new Date(2022, 6, 28),
         coordinator: project.coordinator,
         students: [project.students],
+        id: project.name.replace(" ", ""),
+        selected: false,
       });
+      $scope.updatePages();
     });
-
-    $scope.paginateProjects($scope.currentPage);
   })
   .filter("limitarTamanho", function () {
     return function (input, tamanho) {
