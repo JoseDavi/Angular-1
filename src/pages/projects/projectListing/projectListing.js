@@ -173,9 +173,18 @@ angular.module("appExemplo").controller("projectListingController", function ($s
         }
     }
 
-    $scope.teste = function (){
-        console.log($scope.selectedPage);
-        console.log($scope.currentPage);
+    $scope.firstPage = function(){
+        if($scope.currentPage > 1) {
+            $scope.currentPage = 1;
+            $scope.calculateView();
+        }
+    }
+
+    $scope.lastPage = function () {
+        if($scope.currentPage < $scope.totalPages) {
+            $scope.currentPage = Math.ceil($scope.projects.length / $scope.pageSize);
+            $scope.calculateView();
+        }
     }
 
    $scope.calculateView()

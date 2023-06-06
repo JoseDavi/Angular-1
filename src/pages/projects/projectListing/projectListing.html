@@ -46,7 +46,7 @@
             </select>
             <div class="show-paging">
                 <div class="go-to-start">
-                    <i class="dds__icon dds__icon--collapse-down"></i>
+                    <i class="dds__icon dds__icon--collapse-down" ng-click="firstPage()"></i>
                 </div>
                 <i class="dds__icon dds__icon--arrow-tri-left" ng-click="previousPage()"></i>
                 <div class="showPage" ng-model="currentPage">
@@ -54,7 +54,7 @@
                 </div>
                 <i class="dds__icon dds__icon--arrow-tri-right" ng-click="nextPage()"></i>
                 <div class="go-to-end">
-                    <i class="dds__icon dds__icon--collapse-down"></i>
+                    <i class="dds__icon dds__icon--collapse-down" ng-click="lastPage()"></i>
                 </div>
             </div>
         </div>
