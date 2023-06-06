@@ -211,6 +211,33 @@ angular.module("appExemplo").controller("projectListingController", function ($s
             $scope.select($scope.paginateProjects[i])
         }
     }
+    // $scope.allTrue = function() {
+    //     let result = []
+    //     for(let i = 0; i < $scope.paginateProjects.length; i++) {
+    //         result.push($scope.paginateProjects[i].selected)
+    //     }
+    //     let allTrue = result.filter(() => true)
+    //     let turnedTrue = []
+    //     if(allTrue.length != projects.length) {
+    //         let falses = projects.filter(project => project.selected == false)
+    //         turnedTrue = falses.map(project => project.selected = true)
+    //     } 
+    //     result.push(turnedTrue)
+    // }
+
+    // $scope.allFalse = function() {
+    //     let result = []
+    //     for(let i = 0; i < $scope.paginateProjects.length; i++) {
+    //         result.push($scope.paginateProjects[i].selected)
+    //     }
+    //     let allFalse = result.filter(() => false)
+    //     let turnedFalse = []
+    //     if(allFalse.length != $scope.paginateProjects.length) {
+    //         let trues = $scope.paginateProjects.filter(project => project.selected == false)
+    //         turnedFalse = trues.map(project => project.selected = true)
+    //     } 
+    //     result.push(turnedFalse)
+    // }
    $scope.calculateView()
 }).filter('limitarTamanho', function(){
     return function(input, tamanho) {
