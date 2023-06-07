@@ -1,6 +1,6 @@
 angular
   .module("appExemplo")
-  .controller("projectRegistrationController", function ($scope) {
+  .controller("projectRegistrationController", function ($scope, $rootScope) {
     $scope.project = {
       name: "",
       coordinator: "",
@@ -37,7 +37,7 @@ angular
     };
 
     $scope.upload = function () {
-      $scope.$emit("newProject", $scope.project);
+      $rootScope.$emit("newProject", $scope.project);
     };
 
     $scope.click = function () {

@@ -6,8 +6,7 @@ angular
       $scope.tab = tab;
       console.log($scope.tab);
     };
-    $scope.$on("newProject", function (event, project) {
+    $rootScope.$on("newProject", function (event, project) {
       $scope.tab = "content";
-      $rootScope.$broadcast("addProject", project);
     });
   });

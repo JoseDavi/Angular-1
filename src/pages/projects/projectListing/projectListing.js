@@ -175,7 +175,35 @@ angular
       console.log($scope.totalPages, $scope.projects, $scope.paginateProjects);
     };
 
+    $scope.calculateView();
+
     $scope.updatePages = function () {
+      $scope.projects.push({
+        name: "Project 1",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        date: new Date(2022, 6, 28),
+        coordinator: "luisthiago",
+        students: [
+          {
+            name: "davigomes",
+            color1: "#5CC1EE",
+            color2: "1px solid #0063B8",
+          },
+          {
+            name: "estheniosouza",
+            color1: "#9BC438",
+            color2: "1px solid #436F00",
+          },
+          {
+            name: "lucassoarez",
+            color1: "#9BC438",
+            color2: "1px solid #436F00",
+          },
+        ],
+        id: "project1",
+        selected: false,
+      });
       $scope.totalPages = Math.ceil($scope.projects.length / $scope.pageSize);
       $scope.calculateView();
     };
@@ -229,7 +257,7 @@ angular
       }
     };
 
-    $rootScope.$on("addProject", function (event, project) {
+    $rootScope.$on("newProject", function (event, project) {
       console.log(event, project);
       $scope.projects.push({
         name: project.name,
