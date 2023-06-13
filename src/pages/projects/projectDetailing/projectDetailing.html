@@ -1,3 +1,29 @@
 <div ng-controller="projectDetailingController" class="project-view-container">
-    <h1>projectDetailing is working</h1>
+    <div class="project-detailing-container">
+        <h3>{{nameProject}}</h3>
+        <h3>Number: {{id}}</h3>
+        <p>Summary: {{description}}</p>
+        <img src="{{image}}" alt="imagem projeto">
+        <div class="back-button" ng-click="backButton()">
+
+        </div>
+    </div>
+    <div class="project-detailing-information">
+        <h3>{{nameProject}}</h3>
+
+        <h4>Name of Project: </h4>{{nameProject}}
+
+        <h4>Coordinator: </h4> {{projectCoordinator}}
+
+        <h4>Students</h4> 
+        <div ng-repeat="student in students">
+            {{student.name}}
+        </div>
+
+        <h4>Upload: </h4> {{upload}}
+        <h4>Comments: </h4> {{comments}}
+        <h4>Type: </h4> {{typeDocument}}
+        <h4>Format: </h4> {{format}}
+        <h4>File Size: </h4> {{fileSize}}
+    </div>
 </div>
