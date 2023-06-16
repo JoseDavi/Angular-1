@@ -1,53 +1,53 @@
 angular
   .module("appExemplo")
-  .controller("projectRegistrationController", function ($scope) {
-    $scope.project = {
-      name: "",
-      coordinator: "",
-      students: "",
-      description: "",
-      document: "",
-    };
-
-    $scope.students = [
-      {
-        name: "Jose Davi",
-        id: 1,
-      },
-      {
-        name: "Rafael",
-        id: 2,
-      },
-      {
-        name: "Ennyo",
-        id: 3,
-      },
-    ];
-
-    $scope.documents = [];
-
-    $scope.cancel = function () {
+  .controller(
+    "projectRegistrationController",
+    function ($scope, ProjectService) {
       $scope.project = {
         name: "",
         coordinator: "",
-        students: "",
+        students: [],
         description: "",
-        document: "",
+        documents: [],
       };
-    };
 
-    $scope.upload = function () {
-      $scope.$emit("newProject", $scope.project);
-    };
+      $scope.students = [
+        {
+          name: "Jose Davi",
+          id: 1,
+        },
+        {
+          name: "Rafael",
+          id: 2,
+        },
+        {
+          name: "Ennyo",
+          id: 3,
+        },
+      ];
 
-    $scope.click = function () {
-      document.getElementById("file-input-document").click();
-    };
+      $scope.cancel = function () {
+        $scope.project = {
+          name: "",
+          coordinator: "",
+          students: "",
+          description: "",
+          document: "",
+        };
+      };
 
-    $scope.inputFileChange = function (element) {
-      const file = element.files[0];
-      console.log(file);
-      $scope.documents = element.files;
-      $scope.project.document = file;
-    };
-  });
+      $scope.upload = function () {
+        ProjectService.addProject($scope.project);
+        $scope.$emit("newProject");
+      };
+
+      $scope.click = function () {
+        document.getElementById("file-input-document").click();
+      };
+
+      $scope.inputFileChange = function (element) {
+        console.log(element.files);
+        $scope.project.documents = file;
+      };
+    }
+  );
