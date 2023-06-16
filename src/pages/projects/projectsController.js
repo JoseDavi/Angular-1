@@ -8,7 +8,7 @@ angular
       console.log($scope.tab);
     };
 
-    $scope.$on("newProject", function () {
+    $scope.$on("setList", function () {
       $scope.tab = "content";
     });
 

@@ -3,5 +3,43 @@
   href="pages/projects/projectDetailing/projectDetailing.css"
 />
 <div ng-controller="projectDetailingController" class="project-view-container">
-  <h1>{{project}}</h1>
+  <div class="header">
+    <div class="title">
+      <h3>{{project.name}}</h3>
+      <h3>Number: 002</h3>
+    </div>
+    <div>{{project.description}}</div>
+  </div>
+  <div class="content">
+    <div class="document">
+      <img src="assets/images/pdfImage.png" />
+    </div>
+    <div class="info">
+      <h3>{{project.name}}</h3>
+      <p>Name of project: {{project.name}}</p>
+      <p>Coordinator: {{project.coordinator}}</p>
+      <p>
+        Students:
+        <td class="students">
+          <div ng-repeat="student in project.students" class="students-name">
+            <div
+              ng-style="{backgroundColor: student.color1, 'border': student.color2}"
+            >
+              {{student.name}}
+            </div>
+          </div>
+        </td>
+      </p>
+      <p>Upload: 7-17-2022 7:04 PM</p>
+      <p>Description: {{project.descripion}}</p>
+      <p>Document Name: {{project.documents[0].name}}</p>
+      <p>Document Type: {{project.documents[0].type}}</p>
+      <p>Document Size: {{project.documents[0].size}}</p>
+    </div>
+  </div>
+  <div class="footer">
+    <div ng-click="back()" class="bnt">
+      <i class="dds__icon dds__icon--arrow-left"></i>
+    </div>
+  </div>
 </div>

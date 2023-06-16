@@ -35,7 +35,7 @@ angular
 
       $scope.upload = function () {
         ProjectService.addProject($scope.project);
-        $scope.$emit("newProject");
+        $scope.$emit("setList");
       };
 
       $scope.click = function () {
