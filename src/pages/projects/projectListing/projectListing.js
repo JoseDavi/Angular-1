@@ -1,109 +1,87 @@
-angular.module("appExemplo").controller("projectListingController", function ($scope) {
-    $scope.projects = [
-        {
-            name: "Project 1",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            date: new Date(6, 28, 2022),
-            coordinator: "luisthiago",
-            students:[
-                {
-                    name: 'davigomes'
-                },
-                {
-                    name: 'estheniosouza'
-                },
-                {
-                    name: 'lucassoarez'
-                },
+angular
+  .module("appExemplo")
+  .controller("projectListingController", function (ProjectService, $scope) {
+    $scope.projects = ProjectService.getProjects();
+    $scope.pages = [5, 10, 15, 20, 25];
+    $scope.pageSize = 5;
+    $scope.currentPage = 1;
+    $scope.totalPages = Math.ceil($scope.projects.length / $scope.pageSize);
+    $scope.paginateProjects = [];
 
-            ]
-        }, 
-        {
-            name: "Project 2",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            date: new Date(6, 28, 2022),
-            coordinator: "luisthiago",
-            students:[
-                {
-                    name: 'davigomes'
-                },
-                {
-                    name: 'estheniosouza'
-                },
-                {
-                    name: 'lucassoarez'
-                },
+    $scope.calculateView = function () {
+      var startIndex = ($scope.currentPage - 1) * $scope.pageSize;
+      var endIndex = startIndex + $scope.pageSize;
+      $scope.paginateProjects = $scope.projects.slice(startIndex, endIndex);
+    };
 
-            ]
-        }, 
-        {
-            name: "Project 3",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            date: new Date(6, 28, 2022),
-            coordinator: "luisthiago",
-            students:[
-                {
-                    name: 'davigomes'
-                },
-                {
-                    name: 'estheniosouza'
-                },
-                {
-                    name: 'lucassoarez'
-                },
+    $scope.updatePages = function () {
+      $scope.totalPages = Math.ceil($scope.projects.length / $scope.pageSize);
+      $scope.calculateView();
+    };
 
-            ]
-        },{ 
-            name: "Project 4",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            date: new Date(6, 28, 2022),
-            coordinator: "luisthiago",
-            students:[
-                {
-                    name: 'davigomes'
-                },
-                {
-                    name: 'estheniosouza'
-                },
-                {
-                    name: 'lucassoarez'
-                },
+    $scope.previousPage = function () {
+      if ($scope.currentPage > 1) {
+        $scope.currentPage--;
+        $scope.calculateView();
+      }
+    };
 
-            ]
-        },{ 
-            name: "Project 5",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            date: new Date(6, 28, 2022),
-            coordinator: "luisthiago",
-            students:[
-                {
-                    name: 'davigomes'
-                },
-                {
-                    name: 'estheniosouza'
-                },
-                {
-                    name: 'lucassoarez'
-                },
+    $scope.nextPage = function () {
+      if ($scope.currentPage < $scope.totalPages) {
+        $scope.currentPage++;
+        $scope.calculateView();
+      }
+    };
 
-            ]
-        },{ 
-            name: "Project 6",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            date: new Date(6, 28, 2022),
-            coordinator: "luisthiago",
-            students:[
-                {
-                    name: 'davigomes'
-                },
-                {
-                    name: 'estheniosouza'
-                },
-                {
-                    name: 'lucassoarez'
-                },
+    $scope.firstPage = function () {
+      if ($scope.currentPage > 1) {
+        $scope.currentPage = 1;
+        $scope.calculateView();
+      }
+    };
 
-            ]
-        }
-    ]
-});
+    $scope.lastPage = function () {
+      if ($scope.currentPage < $scope.totalPages) {
+        $scope.currentPage = Math.ceil(
+          $scope.projects.length / $scope.pageSize
+        );
+        $scope.calculateView();
+      }
+    };
+
+    $scope.select = function (project) {
+      if (project.selected == true) {
+        var value = false;
+      } else {
+        var value = true;
+      }
+
+      let value1 = project.id;
+      let values = document.getElementById(value1);
+      values.checked = value;
+
+      var indice = $scope.projects.indexOf(project);
+      $scope.projects[indice].selected = value;
+    };
+
+    $scope.selectAll = function () {
+      for (var i = 0; i < $scope.paginateProjects.length; i++) {
+        $scope.select($scope.paginateProjects[i]);
+      }
+    };
+
+    $scope.openDetails = function (project) {
+      $scope.$emit("openDetails");
+      ProjectService.setCurrentProject(project);
+    };
+
+    $scope.calculateView();
+  })
+  .filter("limitarTamanho", function () {
+    return function (input, tamanho) {
+      if (input.length > tamanho) {
+        return input.substring(0, tamanho) + "...";
+      }
+      return input;
+    };
+  });

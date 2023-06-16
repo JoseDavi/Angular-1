@@ -1,10 +1,111 @@
-<div ng-controller="projectListingController" class="main-container">
-    <div class="listing">
-        <div class="search">
-            <input type="search" ng-model="search" placeholder="Search for Project" class="search-input">
-            <button class="clear-btn">Clear</button>
-            <button class="search-btn">Search</button>
+<link
+  rel="stylesheet"
+  href="pages/projects/projectListing/projectListing.css"
+/>
+<div ng-controller="projectListingController" class="main-containerlisting">
+  <div class="listing">
+    <div class="search">
+      <input
+        type="search"
+        ng-model="search"
+        placeholder="Search for Project"
+        class="search-input"
+      />
+      <button class="clear-btn">Clear</button>
+      <button class="search-btn">Search</button>
+    </div>
+    <div class="horizontal-row"></div>
+    <div class="show-projects">
+      <div class="project-listing-buttons">
+        <span> Projects({{projects.length}}):</span>
+        <div class="project-lisiting-icons">
+          <i class="dds__icon dds__icon--download project-icon"></i>
+          <i class="dds__icon dds__icon--trash project-icon"></i>
+          <div class="change-view">
+            <i class="dds__icon dds__icon--compare project-icon"></i>
+          </div>
         </div>
-        <div class="horizontal-row"></div>
-    </div>  
+      </div>
+      <table ng-model="paginateProjects">
+        <tr>
+          <td class="">
+            <input
+              type="checkbox"
+              name="projects "
+              id="all-projects"
+              ng-click="selectAll()"
+            /><span>Name of Projects</span>
+          </td>
+          <td class="table-head">Description</td>
+          <td class="table-head">Date</td>
+          <td class="table-head">Coordinator</td>
+          <td class="table-head">Students</td>
+        </tr>
+        <tr
+          ng-repeat="project in paginateProjects"
+          ng-click="openDetails(project)"
+        >
+          <td class="name">
+            <input
+              type="checkbox"
+              name="project.name"
+              id="{{project.id}}"
+              ng-click="select(project)"
+            /><span>{{project.name}}</span>
+          </td>
+          <td class="description">
+            {{project.description | limitarTamanho: 100}}
+          </td>
+          <td class="date">{{project.date | date:'MM/dd/yy'}}</td>
+          <td class="coordinator">{{project.coordinator}}</td>
+          <td class="students">
+            <div ng-repeat="student in project.students" class="students-name">
+              <div
+                ng-style="{backgroundColor: student.color1, 'border': student.color2}"
+              >
+                {{student.name}}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="buttons">
+      <div class="select-buttons">
+        <select
+          ng-model="pageSize"
+          ng-options="page for page in pages"
+          ng-change="updatePages()"
+        >
+          {{pages}}
+        </select>
+        <span>
+          {{currentPage}} - {{totalPages}} of {{paginateProjects.length}} items
+        </span>
+      </div>
+      <div class="show-paging">
+        <div class="go-to-start">
+          <i
+            class="dds__icon dds__icon--collapse-down"
+            ng-click="firstPage()"
+          ></i>
+        </div>
+        <i
+          class="dds__icon dds__icon--arrow-tri-left"
+          ng-click="previousPage()"
+        ></i>
+        <div class="showPage" ng-model="currentPage">{{currentPage}}</div>
+        <i
+          class="dds__icon dds__icon--arrow-tri-right"
+          ng-click="nextPage()"
+        ></i>
+        <div class="go-to-end">
+          <i
+            class="dds__icon dds__icon--collapse-down"
+            ng-click="lastPage()"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

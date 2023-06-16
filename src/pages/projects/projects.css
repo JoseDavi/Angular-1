@@ -30,3 +30,7 @@
 a {
   display: flex;
 }
+
+.details {
+  height: calc(100% - 40px);
+}

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="pages/login/login.css" />
+
 <div ng-controller="loginController" class="main-container">
   <div class="login-container">
     <div class="login-image">
@@ -50,6 +52,13 @@
             type="text"
             ng-model="user.email"
             placeholder="Email"
+            required
+          />
+
+          <input
+            type="text"
+            ng-model="user.username"
+            placeholder="username"
             required
           />
 

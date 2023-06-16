@@ -1,7 +1,6 @@
-angular.module("appExemplo").controller("appController", [
-  "$scope",
-  "$rootScope",
-  function ($scope, $rootScope) {
-    // $scope.isLoginPage = $rootScope.isLoginPageGeneral;
-  },
-]);
+app.controller("appController", function ($scope, $location) {
+  $scope.isLoginPage = function () {
+    var currentPath = $location.path();
+    return currentPath === "/login";
+  };
+});

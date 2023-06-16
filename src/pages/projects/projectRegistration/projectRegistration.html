@@ -1,3 +1,8 @@
+<link
+  rel="stylesheet"
+  href="pages/projects/projectRegistration/projectRegistration.css"
+/>
+
 <div
   ng-controller="projectRegistrationController"
   class="projectsReegistration-main-container"
@@ -18,6 +23,7 @@
     >
       <input
         hidden
+        multiple
         id="file-input-document"
         type="file"
         onchange="angular.element(this).scope().inputFileChange(this)"
@@ -41,10 +47,30 @@
 
       <div class="element">
         <label>Students</label>
-        <select
-          ng-model="project.student"
+        <!-- <select
+          ng-model="project.students"
           ng-options="student.name for student in students"
-        ></select>
+        ></select> -->
+        <div
+          ng-click="toggleOptions()"
+          ng-class="{'open': showOptions}"
+          class="select-box"
+        >
+          <span class="selected-options"
+            >{{ project.students.length }} opções selecionadas</span
+          >
+          <ul ng-show="showOptions">
+            <li ng-repeat="student in students">
+              <label ng-click="$event.stopPropagation()">
+                <input
+                  type="checkbox"
+                  ng-model="student.selected"
+                  ng-change="updateSelectedOptions()"
+                />{{ student.name }}
+              </label>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="element f4">

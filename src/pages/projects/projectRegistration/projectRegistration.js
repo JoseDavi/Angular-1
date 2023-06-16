@@ -1,53 +1,50 @@
 angular
   .module("appExemplo")
-  .controller("projectRegistrationController", function ($scope) {
-    $scope.project = {
-      name: "",
-      coordinator: "",
-      student: "",
-      description: "",
-      document: "",
-    };
-
-    $scope.students = [
-      {
-        name: "Jose Davi",
-        id: 1,
-      },
-      {
-        name: "Rafael",
-        id: 2,
-      },
-      {
-        name: "Ennyo",
-        id: 3,
-      },
-    ];
-
-    $scope.documents = [];
-
-    $scope.cancel = function () {
+  .controller(
+    "projectRegistrationController",
+    function ($scope, ProjectService) {
       $scope.project = {
         name: "",
         coordinator: "",
-        student: "",
+        students: [],
         description: "",
-        document: "",
+        documents: [],
       };
-    };
 
-    $scope.upload = function () {
-      console.log($scope.project);
-    };
+      $scope.students = ProjectService.getStudents();
 
-    $scope.click = function () {
-      document.getElementById("file-input-document").click();
-    };
+      $scope.toggleOptions = function () {
+        $scope.showOptions = !$scope.showOptions;
+      };
 
-    $scope.inputFileChange = function (element) {
-      const file = element.files[0];
-      console.log(file);
-      $scope.documents = element.files;
-      $scope.project.document = file;
-    };
-  });
+      $scope.updateSelectedOptions = function () {
+        $scope.project.students = $scope.students.filter(function (option) {
+          return option.selected;
+        });
+      };
+
+      $scope.cancel = function () {
+        $scope.project = {
+          name: "",
+          coordinator: "",
+          students: "",
+          description: "",
+          document: "",
+        };
+      };
+
+      $scope.upload = function () {
+        ProjectService.addProject($scope.project);
+        $scope.$emit("setList");
+      };
+
+      $scope.click = function () {
+        document.getElementById("file-input-document").click();
+      };
+
+      $scope.inputFileChange = function (element) {
+        console.log(element.files);
+        $scope.project.documents = element.files;
+      };
+    }
+  );

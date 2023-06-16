@@ -6,6 +6,6 @@ angular
 
     $scope.projectList = "Project Listing";
     $scope.setPage = function () {
-      $location.path("projects");
+      $location.path("/projects");
     };
   });
