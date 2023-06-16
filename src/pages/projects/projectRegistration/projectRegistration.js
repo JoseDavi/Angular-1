@@ -11,20 +11,17 @@ angular
         documents: [],
       };
 
-      $scope.students = [
-        {
-          name: "Jose Davi",
-          id: 1,
-        },
-        {
-          name: "Rafael",
-          id: 2,
-        },
-        {
-          name: "Ennyo",
-          id: 3,
-        },
-      ];
+      $scope.students = ProjectService.getStudents();
+
+      $scope.toggleOptions = function () {
+        $scope.showOptions = !$scope.showOptions;
+      };
+
+      $scope.updateSelectedOptions = function () {
+        $scope.project.students = $scope.students.filter(function (option) {
+          return option.selected;
+        });
+      };
 
       $scope.cancel = function () {
         $scope.project = {
@@ -47,7 +44,7 @@ angular
 
       $scope.inputFileChange = function (element) {
         console.log(element.files);
-        $scope.project.documents = file;
+        $scope.project.documents = element.files;
       };
     }
   );

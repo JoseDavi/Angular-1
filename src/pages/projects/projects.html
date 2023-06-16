@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="pages/projects/projects.css" />
+
 <div ng-controller="projectsController" class="main-container general">
   <ul class="projects-tabs">
     <div class="tab" ng-class="{active: tab === 'content'}">
@@ -15,12 +17,20 @@
       <div ng-switch-when="content" class="general-content">
         <div
           ng-include="'pages/projects/projectListing/projectListing.html'"
-          class="general-content"></div>
+          class="general-content"
+        ></div>
       </div>
       <div ng-switch-when="new">
         <div
           ng-include="'pages/projects/projectRegistration/projectRegistration.html'"
-         class="general-content"></div>
+          class="general-content"
+        ></div>
+      </div>
+      <div ng-switch-when="details">
+        <div
+          ng-include="'pages/projects/projectDetailing/projectDetailing.html'"
+          class="general-content"
+        ></div>
       </div>
     </div>
   </div>

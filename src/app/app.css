@@ -12,6 +12,12 @@
     "sidebar content";
 }
 
+.login {
+  grid-template-areas:
+    "content content"
+    "content content" !important;
+}
+
 .app-container-header {
   grid-area: header;
 }
@@ -47,7 +53,7 @@
   cursor: pointer;
 }
 
-.general-content{
+.general-content {
   height: 100%;
   width: 100%;
 }

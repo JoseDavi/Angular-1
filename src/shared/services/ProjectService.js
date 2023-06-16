@@ -151,6 +151,30 @@ app.service("ProjectService", function () {
       id: 1,
     },
   ];
+  var students = [
+    {
+      name: "Jose Davi",
+      id: 1,
+      color1: "#9BC438",
+      color2: "1px solid #436F00",
+      selected: false,
+    },
+    {
+      name: "Rafael",
+      id: 2,
+      color1: "#9BC438",
+      color2: "1px solid #436F00",
+      selected: false,
+    },
+    {
+      name: "Ennyo",
+      id: 3,
+      color1: "#9BC438",
+      color2: "1px solid #436F00",
+      selected: false,
+    },
+  ];
+  var currentProject;
 
   this.addProject = function (project) {
     console.log(project);
@@ -165,5 +189,21 @@ app.service("ProjectService", function () {
 
   this.getProjects = function () {
     return projects;
+  };
+
+  this.getStudents = function () {
+    return students;
+  };
+
+  this.addStudent = function (student) {
+    students.push(student);
+  };
+
+  this.setCurrentProject = function (project) {
+    currentProject = project;
+  };
+
+  this.getCurrentProject = function () {
+    return currentProject;
   };
 });
