@@ -41,24 +41,25 @@
           <td class="table-head">Coordinator</td>
           <td class="table-head">Students</td>
         </tr>
-        <tr
-          ng-repeat="project in paginateProjects"
-          ng-click="openDetails(project)"
-        >
+        <tr ng-repeat="project in paginateProjects">
           <td class="name">
             <input
               type="checkbox"
               name="project.name"
               id="{{project.id}}"
               ng-click="select(project)"
-            /><span>{{project.name}}</span>
+            /><span ng-click="openDetails(project)">{{project.name}}</span>
           </td>
-          <td class="description">
+          <td class="description" ng-click="openDetails(project)">
             {{project.description | limitarTamanho: 100}}
           </td>
-          <td class="date">{{project.date | date:'MM/dd/yy'}}</td>
-          <td class="coordinator">{{project.coordinator}}</td>
-          <td class="students">
+          <td class="date" ng-click="openDetails(project)">
+            {{project.date | date:'MM/dd/yy'}}
+          </td>
+          <td class="coordinator" ng-click="openDetails(project)">
+            {{project.coordinator}}
+          </td>
+          <td class="students" ng-click="openDetails(project)">
             <div ng-repeat="student in project.students" class="students-name">
               <div
                 ng-style="{backgroundColor: student.color1, 'border': student.color2}"

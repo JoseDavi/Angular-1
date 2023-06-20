@@ -8,7 +8,7 @@ angular
         coordinator: "",
         students: [],
         description: "",
-        documents: [],
+        document: {},
       };
 
       $scope.students = ProjectService.getStudents();
@@ -27,9 +27,9 @@ angular
         $scope.project = {
           name: "",
           coordinator: "",
-          students: "",
+          students: [],
           description: "",
-          document: "",
+          document: {},
         };
       };
 
@@ -43,8 +43,7 @@ angular
       };
 
       $scope.inputFileChange = function (element) {
-        console.log(element.files);
-        $scope.project.documents = element.files;
+        $scope.project.document = element.files[0];
       };
     }
   );
