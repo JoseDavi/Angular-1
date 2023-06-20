@@ -5,7 +5,6 @@ angular
 
     $scope.setTab = function (tab) {
       $scope.tab = tab;
-      console.log($scope.tab);
     };
 
     $scope.$on("setList", function () {

@@ -177,13 +177,13 @@ app.service("ProjectService", function () {
   var currentProject;
 
   this.addProject = function (project) {
-    console.log(project);
     projects.push({
       name: project.name,
       description: project.description,
       date: new Date(2022, 6, 28),
       coordinator: project.coordinator,
       students: project.students,
+      document: project.document,
     });
   };
 

@@ -26,17 +26,21 @@ app.service("LoginService", function ($location, ProjectService) {
   var user = null;
   count = 100;
   this.register = function (object) {
-    object.type === "student"
-      ? students.set(object.username, object)
-      : teachers.set(object.username, object);
-    ProjectService.addStudent({
-      name: object.fullname,
-      id: count,
-      color1: "#9BC438",
-      color2: "1px solid #436F00",
-      selected: false,
-    });
-    count++;
+    if (object.type === "student") {
+      students.set(object.username, object);
+      ProjectService.addStudent({
+        name: object.fullname,
+        id: count,
+        color1: "#9BC438",
+        color2: "1px solid #436F00",
+        selected: false,
+      });
+      count++;
+      user = students.get(object.username);
+    } else {
+      teachers.set(object.username, object);
+      user = teachers.get(object.username);
+    }
     $location.path("/home");
   };
 

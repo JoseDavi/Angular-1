@@ -22,6 +22,7 @@ angular
     };
 
     $scope.register = function () {
+      $scope.user.type = $scope.type;
       LoginService.register($scope.user);
     };
   });
