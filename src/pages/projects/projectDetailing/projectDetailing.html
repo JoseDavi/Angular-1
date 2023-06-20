@@ -36,6 +36,31 @@
       <p>Document Type: {{project.document.type}}</p>
       <p>Document Size: {{project.document.size}}</p>
     </div>
+    <div class="editing">
+      <h3>{{project.name}}</h3>
+      <p>Name of project: <input type="text" value="{{project.name}}" ng-model="project.name"></p>
+      <p>Coordinator: <input type="text" value="{{project.coordinator}}" ng-model="project.coordinator"></p>
+      <p>
+        Students:
+        <div class="element">
+            <label>Students</label>
+              <ul>
+                <li ng-repeat="student in allStudents">
+                    <input
+                      type="checkbox"
+                      ng-model="student.selected"
+                      ng-change="updateSelectedOptions()"
+                      ng-checked="isSelected(student)"/>
+                      {{ student.name }}
+                </li>
+              </ul>
+          </div>
+      </p>
+      <p>Description: <input type="textarea" value="{{project.description}}" ng-model="project.description"></p>
+      <div ng-click="updateProject()">
+        Atualizar
+      </div>
+    </div>
   </div>
   <div class="footer">
     <div ng-click="back()" class="bnt">
