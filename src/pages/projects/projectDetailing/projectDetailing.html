@@ -14,7 +14,7 @@
     <div class="document">
       <img src="assets/images/pdfImage.png" />
     </div>
-    <div class="info">
+    <div class="info" ng-show="detailing">
       <h3>{{project.name}}</h3>
       <p>Name of project: {{project.name}}</p>
       <p>Coordinator: {{project.coordinator}}</p>
@@ -24,6 +24,7 @@
           <div ng-repeat="student in project.students" class="students-name">
             <div
               ng-style="{backgroundColor: student.color1, 'border': student.color2}"
+              class="students-name-info"
             >
               {{student.name}}
             </div>
@@ -35,13 +36,13 @@
       <p>Document Name: {{project.document.name}}</p>
       <p>Document Type: {{project.document.type}}</p>
       <p>Document Size: {{project.document.size}}</p>
+      <button ng-click="showEdit(false)">Editar</button>
     </div>
-    <div class="editing">
+    <div class="editing" ng-show="!detailing">
       <h3>{{project.name}}</h3>
-      <p>Name of project: <input type="text" value="{{project.name}}" ng-model="project.name"></p>
+      <p>Name of project: <input type="text" value="{{project.name}}" id="projectName"></p>
       <p>Coordinator: <input type="text" value="{{project.coordinator}}" ng-model="project.coordinator"></p>
       <p>
-        Students:
         <div class="element">
             <label>Students</label>
               <ul>
@@ -56,14 +57,14 @@
               </ul>
           </div>
       </p>
-      <p>Description: <input type="textarea" value="{{project.description}}" ng-model="project.description"></p>
-      <div ng-click="updateProject()">
+      <p>Description: <br><textarea rows="4" cols="50" id="projectDescription">{{project.description}}</textarea></p>
+      <div ng-click="updateProject(project.name, project.description)" class="att-button">
         Atualizar
       </div>
     </div>
   </div>
   <div class="footer">
-    <div ng-click="back()" class="bnt">
+    <div ng-click="backListing()" class="bnt">
       <i class="dds__icon dds__icon--arrow-left"></i>
     </div>
   </div>

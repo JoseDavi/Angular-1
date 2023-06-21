@@ -2,16 +2,34 @@ angular
   .module("appExemplo")
   .controller("projectDetailingController", function (ProjectService, $scope) {
     $scope.project = ProjectService.getCurrentProject();
-    console.log($scope.project);
+    $scope.detailing = true;
 
-    $scope.back = function () {
-      $scope.$emit("setList");
-    };
 
     $scope.allStudents = angular.copy(ProjectService.getStudents());
 
-    $scope.updateProject = function(){
-      ProjectService.setCurrentProject($scope.project);
+
+    
+
+    $scope.updateProject = function(project){
+      $scope.$watch(function () {
+        return document.getElementById('projectName').value;
+      }, function(novoNome){
+        $scope.project.name = novoNome;
+      })
+    
+      $scope.$watch(function () {
+        return document.getElementById('projectDescription').value;
+      }, function(novaDescription){
+        $scope.project.description = novaDescription;
+      })
+
+      ProjectService.setCurrentProject(project);
+      $scope.showEdit(true);
+    }
+
+
+    $scope.backListing = function () {
+      history.go(-1);
     }
 
     $scope.updateSelectedOptions = function () {
@@ -25,6 +43,9 @@ angular
           return std.id === student.id;
         });
       };
-    
+
+      $scope.showEdit = function(value) {
+        $scope.detailing = value;  
+      }
 
   });

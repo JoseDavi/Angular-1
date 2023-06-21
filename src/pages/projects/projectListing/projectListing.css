@@ -164,3 +164,8 @@
 .select-buttons {
   margin-top: -0.5%;
 }
+
+
+.name, .description, .date, .coordinator, .students{
+  cursor: pointer;
+}
