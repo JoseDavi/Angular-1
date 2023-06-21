@@ -1,39 +1,35 @@
 angular
   .module("appExemplo")
   .controller("projectDetailingController", function (ProjectService, $scope) {
-    $scope.project = ProjectService.getCurrentProject();
+    $scope.project =  ProjectService.getCurrentProject();
+    console.log($scope.project);
     $scope.detailing = true;
-
+    $scope.projectEdit = angular.copy(ProjectService.getCurrentProject());
 
     $scope.allStudents = angular.copy(ProjectService.getStudents());
 
 
-    
+    $scope.updateProject = function(){
+      $scope.projectEdit.document = $scope.project.document;
+      ProjectService.setCurrentProject($scope.projectEdit);
+      ProjectService.updateProject($scope.projectEdit);
+      $scope.project = ProjectService.getCurrentProject();
+      $scope.showEdit(true);
+    }
 
-    $scope.updateProject = function(project){
-      $scope.$watch(function () {
-        return document.getElementById('projectName').value;
-      }, function(novoNome){
-        $scope.project.name = novoNome;
-      })
-    
-      $scope.$watch(function () {
-        return document.getElementById('projectDescription').value;
-      }, function(novaDescription){
-        $scope.project.description = novaDescription;
-      })
-
-      ProjectService.setCurrentProject(project);
+    $scope.cancel = function() {
+      $scope.projectEdit = angular.copy(ProjectService.getCurrentProject());
       $scope.showEdit(true);
     }
 
 
-    $scope.backListing = function () {
-      history.go(-1);
-    }
+    $scope.back = function () {
+      $scope.$emit("setList");
+    };
+
 
     $scope.updateSelectedOptions = function () {
-      $scope.project.students = $scope.allStudents.filter(function (option) {
+      $scope.projectEdit.students = $scope.allStudents.filter(function (option) {
         return option.selected;
       });
     };
@@ -48,4 +44,8 @@ angular
         $scope.detailing = value;  
       }
 
+
+      $scope.toggleOptions = function () {
+        $scope.showOptions = !$scope.showOptions;
+      };
   });

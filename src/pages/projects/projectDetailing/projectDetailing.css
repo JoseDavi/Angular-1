@@ -8,7 +8,7 @@
 
 .header {
   height: 85px;
-  width: 60%;
+  width: calc(60% - 20px);
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
@@ -87,4 +87,36 @@ textarea {
   border: 1px solid gray;
   padding-left: 10px;
   cursor: pointer;
+}
+
+
+.element {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+}
+
+.select-box {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.select-box .selected-options {
+  font-weight: bold;
+}
+
+.select-box ul {
+  display: none;
+  position: absolute;
+  list-style-type: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 0;
+}
+
+.select-box.open ul {
+  display: block;
 }

@@ -194,6 +194,8 @@ app.service("ProjectService", function () {
   ];
   var currentProject;
 
+  this.count = 100
+
   this.addProject = function (project) {
     projects.push({
       name: project.name,
@@ -202,7 +204,10 @@ app.service("ProjectService", function () {
       coordinator: project.coordinator,
       students: project.students,
       document: project.document,
+      id: count
     });
+    count++;
+    console.log(project);
   };
 
   this.getProjects = function () {
@@ -224,4 +229,12 @@ app.service("ProjectService", function () {
   this.getCurrentProject = function () {
     return currentProject;
   };
+
+  this.updateProject = function (project) {
+    for(i = 0; i < projects.length; i++) {
+      if(project.id === projects[i].id){
+        projects[i] = project
+      }
+    }
+  }
 });

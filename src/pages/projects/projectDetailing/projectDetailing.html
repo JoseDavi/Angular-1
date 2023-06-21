@@ -14,7 +14,7 @@
     <div class="document">
       <img src="assets/images/pdfImage.png" />
     </div>
-    <div class="info" ng-show="detailing">
+    <div class="info" ng-if="detailing">
       <h3>{{project.name}}</h3>
       <p>Name of project: {{project.name}}</p>
       <p>Coordinator: {{project.coordinator}}</p>
@@ -38,33 +38,45 @@
       <p>Document Size: {{project.document.size}}</p>
       <button ng-click="showEdit(false)">Editar</button>
     </div>
-    <div class="editing" ng-show="!detailing">
+    <div class="editing" ng-if="!detailing">
       <h3>{{project.name}}</h3>
-      <p>Name of project: <input type="text" value="{{project.name}}" id="projectName"></p>
-      <p>Coordinator: <input type="text" value="{{project.coordinator}}" ng-model="project.coordinator"></p>
+      <p>Name of project: <input type="text" value="{{projectEdit.name}}" ng-model="projectEdit.name"></p>
+      <p>Coordinator: <input type="text" value="{{projectEdit.coordinator}}" ng-model="projectEdit.coordinator"></p> 
       <p>
         <div class="element">
             <label>Students</label>
-              <ul>
-                <li ng-repeat="student in allStudents">
-                    <input
-                      type="checkbox"
-                      ng-model="student.selected"
-                      ng-change="updateSelectedOptions()"
-                      ng-checked="isSelected(student)"/>
-                      {{ student.name }}
-                </li>
-              </ul>
+            <div
+                  ng-click="toggleOptions()"
+                  ng-class="{'open': showOptions}"
+                  class="select-box"
+                >
+                <span class="selected-options">Selecione os novos alunos</span>
+              <ul ng-show="showOptions">
+                  <li ng-repeat="student in allStudents">
+                    <label ng-click="$event.stopPropagation()">
+                      <input
+                        type="checkbox"
+                        ng-model="student.selected"
+                        ng-change="updateSelectedOptions()"
+                        ng-checked="isSelected(student)"/>
+                        {{ student.name }}
+                    </label>
+                  </li>
+                </ul>
+              </div>
           </div>
       </p>
-      <p>Description: <br><textarea rows="4" cols="50" id="projectDescription">{{project.description}}</textarea></p>
-      <div ng-click="updateProject(project.name, project.description)" class="att-button">
+      <p>Description: <br><textarea rows="4" cols="50" ng-model="projectEdit.description">{{projectEdit.description}}</textarea></p>
+      <div ng-click="updateProject(project)" class="att-button">
         Atualizar
+      </div>
+      <div ng-click="cancel()" class="att-button">
+        Cancelar
       </div>
     </div>
   </div>
   <div class="footer">
-    <div ng-click="backListing()" class="bnt">
+    <div ng-click="back()" class="bnt">
       <i class="dds__icon dds__icon--arrow-left"></i>
     </div>
   </div>
