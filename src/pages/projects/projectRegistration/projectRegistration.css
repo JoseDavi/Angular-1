@@ -57,3 +57,17 @@ h3 {
 .select-box.open ul {
   display: block;
 }
+
+.registration-buttons{
+  margin: 20px;
+}
+
+.registration-upload{
+  width: 10rem;
+  border-radius: 2px;
+  margin-left: 15px;
+}
+.registration-cancel{
+  width: 5rem;
+  border-radius: 2px;
+}

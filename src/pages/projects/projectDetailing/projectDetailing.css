@@ -58,9 +58,11 @@ img {
 }
 .students-name {
   margin-left: 10px;
+  display: flex;
+  float: left;
 }
 .students-name-info{
-  width: 40%;
+  padding: 3px;
 }
 
 .bnt {
@@ -70,7 +72,7 @@ img {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  color: blue;
+  color:#0063B8;
 }
 
 .bnt i {
@@ -119,4 +121,26 @@ textarea {
 
 .select-box.open ul {
   display: block;
+}
+
+.edit-button{
+  background-color: #0084BD;
+  color: white;
+  border: 1px solid #0084BD;
+}
+
+.edit-buttons {
+  display: flex;
+}
+
+.edit-cancel{
+  margin-left: 10px;
+  background-color: white;
+  border: 1px solid #0084BD;
+  color: #0084BD;
+}
+.edit-update{
+  background-color: #0084BD;
+  color: white;
+  border: 1px solid #0084BD;
 }

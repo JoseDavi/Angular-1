@@ -38,11 +38,17 @@
 #nav-bnt {
   border: 0px;
   background: white;
-  color: blue;
+  color: #0082CD;
   margin-top: 10px;
   cursor: pointer;
 }
 
 input {
   margin-bottom: 5px;
+}
+
+.login-button{
+  border: 1px solid #0082CD;
+  background-color: #0082CD;
+  color: #FFF;
 }
