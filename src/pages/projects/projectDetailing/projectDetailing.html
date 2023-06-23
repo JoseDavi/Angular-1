@@ -14,27 +14,68 @@
     <div class="document">
       <img src="assets/images/pdfImage.png" />
     </div>
-    <div class="info">
+    <div class="info" ng-if="detailing">
       <h3>{{project.name}}</h3>
-      <p>Name of project: {{project.name}}</p>
-      <p>Coordinator: {{project.coordinator}}</p>
+      <p><b>Name of project:</b> {{project.name}}</p>
+      <p><b>Coordinator:</b> {{project.coordinator}}</p>
       <p>
-        Students:
+        <b>Students:</b>
         <td class="students">
           <div ng-repeat="student in project.students" class="students-name">
             <div
               ng-style="{backgroundColor: student.color1, 'border': student.color2}"
+              class="students-name-info"
             >
               {{student.name}}
             </div>
           </div>
         </td>
       </p>
-      <p>Upload: 7-17-2022 7:04 PM</p>
-      <p>Description: {{project.description}}</p>
-      <p>Document Name: {{project.document.name}}</p>
-      <p>Document Type: {{project.document.type}}</p>
-      <p>Document Size: {{project.document.size}}</p>
+      <br>
+      <p><b>Upload:</b> 7-17-2022 7:04 PM</p>
+      <p><b>Description:</b> {{project.description}}</p>
+      <p><b>Document Name:</b> {{project.document.name}}</p>
+      <p><b>Document Type:</b> {{project.document.type}}</p>
+      <p><b>Document Size:</b> {{project.document.size}}</p>
+      <button ng-click="showEdit(false)" class="edit-button">Editar</button>
+    </div>
+    <div class="editing" ng-if="!detailing">
+      <h3>{{project.name}}</h3>
+      <p><b>Name of project:</b> <input type="text" value="{{projectEdit.name}}" ng-model="projectEdit.name"></p>
+      <p><b>Coordinator:</b> <input type="text" value="{{projectEdit.coordinator}}" ng-model="projectEdit.coordinator"></p> 
+      <p>
+        <div class="element">
+            <label><b>Students</b></label>
+            <div
+                  ng-click="toggleOptions()"
+                  ng-class="{'open': showOptions}"
+                  class="select-box"
+                >
+                <span class="selected-options">Selecione os novos alunos</span>
+              <ul ng-show="showOptions">
+                  <li ng-repeat="student in allStudents">
+                    <label ng-click="$event.stopPropagation()">
+                      <input
+                        type="checkbox"
+                        ng-model="student.selected"
+                        ng-change="updateSelectedOptions()"
+                        ng-checked="isSelected(student)"/>
+                        {{ student.name }}
+                    </label>
+                  </li>
+                </ul>
+              </div>
+          </div>
+      </p>
+      <p><b>Description:</b> <br><textarea rows="4" cols="50" ng-model="projectEdit.description">{{projectEdit.description}}</textarea></p>
+      <div class="edit-buttons">
+        <div ng-click="updateProject(project)" class="att-button edit-update">
+          Atualizar
+        </div>
+        <div ng-click="cancel()" class="att-button edit-cancel">
+          Cancelar
+        </div>
+      </div>
     </div>
   </div>
   <div class="footer">

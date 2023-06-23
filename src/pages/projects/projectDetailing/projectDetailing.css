@@ -8,7 +8,7 @@
 
 .header {
   height: 85px;
-  width: 60%;
+  width: calc(60% - 20px);
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
@@ -39,7 +39,7 @@ img {
   height: 100%;
 }
 
-.info {
+.info, .editing {
   width: 40%;
   height: 100%;
   padding-left: 20px;
@@ -58,6 +58,11 @@ img {
 }
 .students-name {
   margin-left: 10px;
+  display: flex;
+  float: left;
+}
+.students-name-info{
+  padding: 3px;
 }
 
 .bnt {
@@ -67,9 +72,75 @@ img {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  color: blue;
+  color:#0063B8;
 }
 
 .bnt i {
   font-size: 1.2rem;
+}
+
+textarea {
+  font-family: 'Roboto', sans-serif;
+}
+
+.att-button {
+  width: 70px;
+  height: 20px;
+  border: 1px solid gray;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+
+.element {
+  display: flex;
+  flex-direction: column;
+  padding-right: 10px;
+}
+
+.select-box {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.select-box .selected-options {
+  font-weight: bold;
+}
+
+.select-box ul {
+  display: none;
+  position: absolute;
+  list-style-type: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 0;
+}
+
+.select-box.open ul {
+  display: block;
+}
+
+.edit-button{
+  background-color: #0084BD;
+  color: white;
+  border: 1px solid #0084BD;
+}
+
+.edit-buttons {
+  display: flex;
+}
+
+.edit-cancel{
+  margin-left: 10px;
+  background-color: white;
+  border: 1px solid #0084BD;
+  color: #0084BD;
+}
+.edit-update{
+  background-color: #0084BD;
+  color: white;
+  border: 1px solid #0084BD;
 }

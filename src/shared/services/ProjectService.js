@@ -11,16 +11,19 @@ app.service("ProjectService", function () {
           name: "davigomes",
           color1: "#5CC1EE",
           color2: "1px solid #0063B8",
+          id:5
         },
         {
           name: "estheniosouza",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:6
         },
         {
           name: "lucassoarez",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:7
         },
       ],
       id: 1,
@@ -36,19 +39,22 @@ app.service("ProjectService", function () {
           name: "davigomes",
           color1: "#5CC1EE",
           color2: "1px solid #0063B8",
+          id:5
         },
         {
           name: "estheniosouza",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:6
         },
         {
           name: "lucassoarez",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:7
         },
       ],
-      id: 1,
+      id: 2,
     },
     {
       name: "Project 3",
@@ -61,19 +67,22 @@ app.service("ProjectService", function () {
           name: "davigomes",
           color1: "#5CC1EE",
           color2: "1px solid #0063B8",
+          id:5
         },
         {
           name: "estheniosouza",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:6
         },
         {
           name: "lucassoarez",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:7
         },
       ],
-      id: 1,
+      id: 3,
     },
     {
       name: "Project 4",
@@ -86,19 +95,22 @@ app.service("ProjectService", function () {
           name: "davigomes",
           color1: "#5CC1EE",
           color2: "1px solid #0063B8",
+          id:5
         },
         {
           name: "estheniosouza",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:6
         },
         {
           name: "lucassoarez",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:7
         },
       ],
-      id: 1,
+      id: 4,
     },
     {
       name: "Project 5",
@@ -111,19 +123,22 @@ app.service("ProjectService", function () {
           name: "davigomes",
           color1: "#5CC1EE",
           color2: "1px solid #0063B8",
+          id:5
         },
         {
           name: "estheniosouza",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:6
         },
         {
           name: "lucassoarez",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:7
         },
       ],
-      id: 1,
+      id: 5,
     },
     {
       name: "Project 6",
@@ -136,19 +151,22 @@ app.service("ProjectService", function () {
           name: "davigomes",
           color1: "#5CC1EE",
           color2: "1px solid #0063B8",
+          id:5
         },
         {
           name: "estheniosouza",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:6
         },
         {
           name: "lucassoarez",
           color1: "#9BC438",
           color2: "1px solid #436F00",
+          id:7
         },
       ],
-      id: 1,
+      id: 6,
     },
   ];
   var students = [
@@ -176,6 +194,8 @@ app.service("ProjectService", function () {
   ];
   var currentProject;
 
+  this.count = 100
+
   this.addProject = function (project) {
     projects.push({
       name: project.name,
@@ -184,7 +204,10 @@ app.service("ProjectService", function () {
       coordinator: project.coordinator,
       students: project.students,
       document: project.document,
+      id: count
     });
+    count++;
+    console.log(project);
   };
 
   this.getProjects = function () {
@@ -206,4 +229,12 @@ app.service("ProjectService", function () {
   this.getCurrentProject = function () {
     return currentProject;
   };
+
+  this.updateProject = function (project) {
+    for(i = 0; i < projects.length; i++) {
+      if(project.id === projects[i].id){
+        projects[i] = project
+      }
+    }
+  }
 });

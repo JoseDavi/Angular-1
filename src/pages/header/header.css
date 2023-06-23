@@ -25,3 +25,7 @@
 .dds__icon--chevron-down {
   cursor: pointer;
 }
+
+.dds__icon--user{
+  color: #0084BD;
+}

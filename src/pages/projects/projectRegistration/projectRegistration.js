@@ -11,7 +11,7 @@ angular
         document: {},
       };
 
-      $scope.students = ProjectService.getStudents();
+      $scope.students = angular.copy(ProjectService.getStudents());
 
       $scope.toggleOptions = function () {
         $scope.showOptions = !$scope.showOptions;

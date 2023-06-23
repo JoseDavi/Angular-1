@@ -28,15 +28,15 @@
 .clear-btn {
   height: 25px;
   width: 10vw;
-  border: 1px solid blue;
+  border: 1px solid #0063B8;
   background-color: white;
-  color: blue;
+  color: #0063B8;
 }
 .search-btn {
   height: 25px;
   width: 20vw;
-  border: 1px solid blue;
-  background-color: blue;
+  border: 1px solid #0063B8;
+  background-color: #0063B8;
   color: white;
 }
 .horizontal-row {
@@ -163,4 +163,9 @@
 }
 .select-buttons {
   margin-top: -0.5%;
+}
+
+
+.name, .description, .date, .coordinator, .students{
+  cursor: pointer;
 }
