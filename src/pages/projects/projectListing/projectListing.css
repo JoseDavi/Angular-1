@@ -169,3 +169,7 @@
 .name, .description, .date, .coordinator, .students{
   cursor: pointer;
 }
+
+.projects-listing:hover{
+  background-color:#cfcfcf;
+}
