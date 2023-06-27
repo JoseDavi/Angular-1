@@ -207,7 +207,6 @@ app.service("ProjectService", function () {
       id: count
     });
     count++;
-    console.log(project);
   };
 
   this.getProjects = function () {

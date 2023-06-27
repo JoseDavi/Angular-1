@@ -1,11 +1,15 @@
 describe('LoginServiceTest', function() {
-    beforeEach(module('LoginService'));
+    beforeEach(angular.mock.module('appExemplo'));
 
     var UserService;
-
-    beforeEach(inject(function(_UserService_){
-        UserService = _UserService_;
-    }));
+    // beforeEach(inject(function(_UserService_){
+    //     UserService = _UserService_;
+    // }));S
+    beforeEach(
+        inject((_LoginService_) => {
+            UserService = _LoginService_
+        })
+    );
 
     it('deve adicionar um aluno', function() {
 
@@ -22,9 +26,8 @@ describe('LoginServiceTest', function() {
           }}
 
           UserService.register(user);
-
-          expect(UserService.students.length).toEqual(3);
-          expect(UserService.students[0]).toEqual(user);
+          expect(UserService.getStudents().size).toEqual(3);
+          expect(UserService.getUser()).toEqual(user["Lucas Emmanuel"]);
     })
 
 
@@ -44,16 +47,16 @@ describe('LoginServiceTest', function() {
 
           UserService.register(user);
 
-          expect(UserService.teachers.length).toEqual(1);
-          expect(UserService.students[0]).toEqual(user);
+          expect(UserService.teachers.size).toEqual(1);
+          expect(UserService.getUser()).toEqual(user.Adalberto);
     })
 
 
     it('deve adicionar o valor passado do estudante no user corretamente', function() {
 
-        UserService.login('rafael', '123');
+        UserService.login('rafael', '123', "student");
         
-        expect(UserService.user).toEqual('rafael');
+        expect(UserService.getUser().username).toEqual('rafael');
     });
 
     it('deve adicionar o valor passado do professor no user corretamente', function(){
@@ -71,9 +74,9 @@ describe('LoginServiceTest', function() {
         }}
 
         UserService.register(user);
-        UserService.login('rafael', '123');
+        UserService.login('rafael', '123', "teacher");
         
-        expect(UserService.user).toEqual('rafael');
+        expect(UserService.getUser().username).toEqual('rafael');
     });
 
 
