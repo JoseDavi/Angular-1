@@ -1,8 +1,7 @@
 app.service("LoginService", function ($location, ProjectService) {
   const source = this;
-  source.students = new Map();
-  source.teachers = new Map();
-  source.students.set("davi", {
+  source.users = new Map();
+  source.users.set("davi", {
     type: "student",
     fullname: "José Davi",
     username: "davi",
@@ -13,7 +12,7 @@ app.service("LoginService", function ($location, ProjectService) {
     occupation: "student",
     formation: "CCC",
   });
-  source.students.set("rafael", {
+  source.users.set("rafael", {
     type: "student",
     fullname: "Rafael de Souza",
     username: "rafael",
@@ -24,48 +23,39 @@ app.service("LoginService", function ($location, ProjectService) {
     occupation: "student",
     formation: "CCC",
   });
+
+
   var user = null;
   count = 100;
   this.register = function (object) {
-    const newObject = object[Object.keys(object)[0]];
-    if (newObject.type === "student") {
-      source.students.set(newObject.username, newObject);
-      ProjectService.addStudent({
-        name: newObject.fullname,
-        id: count,
-        color1: "#9BC438",
-        color2: "1px solid #436F00",
-        selected: false,
-      });
-      count++;
-      user = source.students.get(newObject.username);
-    } else if (newObject.type === "teacher"){
-      source.teachers.set(newObject.username, newObject);
-      user = source.teachers.get(newObject.username);
-    }
-    $location.path("/home");
+      if (object.type === "student") {
+        source.users.set(object.username, object);
+        ProjectService.addStudent({
+          name: object.fullname,
+          id: count,
+          color1: "#9BC438",
+          color2: "1px solid #436F00",
+          selected: false,
+        });
+        count++;
+        user = source.users.get(object.username);
+      } else{
+        source.users.set(object.username, object);
+        user = source.users.get(object.username);
+      }
+      $location.path("/home");
   };
 
-  this.login = function (username, password, role) {
-    if (role === "student") {
-      if (source.students.has(username)) {
-        if (source.students.get(username).password === password) {
-          user = source.students.get(username);
-          $location.path("/home");
-        } else {
-          alert("Wrong username or password");
-        }
-      } else {
-        alert("Wrong username or password");
-      }
-    } else if (role === "teacher") {
-      if (this.getProfessors().has(username)) {
-        if (this.getProfessors().get(username).password === password) {
-          $location.path("/home");
-          user = source.teachers.get(username);
-        } else {
-          alert("Wrong username or password");
-        }
+  let checkRegister = function(object){
+    return source.users.has(Object.keys(object)[0])
+  }
+
+  this.login = function (username, password) {
+    
+    if (source.users.has(username)) {
+      if (source.users.get(username).password === password) {
+        user = source.users.get(username);
+        $location.path("/home");
       } else {
         alert("Wrong username or password");
       }
@@ -95,11 +85,7 @@ app.service("LoginService", function ($location, ProjectService) {
     return user;
   };
 
-  this.getProfessors = function () {
-    return source.teachers;
-  }
-
-  this.getStudents = function() {
-    return source.students;
+  this.getUsers = function () {
+    return source.users;
   }
 });

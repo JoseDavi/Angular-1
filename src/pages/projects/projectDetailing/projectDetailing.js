@@ -2,7 +2,6 @@ angular
   .module("appExemplo")
   .controller("projectDetailingController", function (ProjectService, $scope) {
     $scope.project =  ProjectService.getCurrentProject();
-    console.log($scope.project);
     $scope.detailing = true;
     $scope.projectEdit = angular.copy(ProjectService.getCurrentProject());
 
