@@ -204,9 +204,9 @@ app.service("ProjectService", function () {
       coordinator: project.coordinator,
       students: project.students,
       document: project.document,
-      id: count
+      id: this.count
     });
-    count++;
+    this.count++;
   };
 
   this.getProjects = function () {
