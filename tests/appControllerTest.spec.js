@@ -13,7 +13,7 @@ describe('appControllerTest', function() {
         $location.path('/login');
 
         var controller = $controller('appController', {$scope: $scope, $location: $location});
-
+        
         expect($scope.isLoginPage()).toBe(true);
     });
 
