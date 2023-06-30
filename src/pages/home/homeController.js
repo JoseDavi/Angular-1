@@ -9,3 +9,4 @@ angular
       $location.path("/projects");
     };
   });
+ 
