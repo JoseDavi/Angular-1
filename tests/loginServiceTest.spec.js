@@ -2,9 +2,6 @@ describe('LoginServiceTest', function() {
     beforeEach(angular.mock.module('appExemplo'));
 
     var UserService;
-    // beforeEach(inject(function(_UserService_){
-    //     UserService = _UserService_;
-    // }));S
     beforeEach(
         inject((_LoginService_) => {
             UserService = _LoginService_
