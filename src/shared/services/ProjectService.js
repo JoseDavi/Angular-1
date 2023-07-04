@@ -229,6 +229,10 @@ app.service("ProjectService", function () {
     return currentProject;
   };
 
+  this.setStudents = function (students1) {
+    students = students1;
+  }
+
   this.updateProject = function (project) {
     for(i = 0; i < projects.length; i++) {
       if(project.id === projects[i].id){
